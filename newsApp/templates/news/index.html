@@ -14,12 +14,8 @@
     <script src="{% static 'news/js/copyURL.js'%}"></script>
 </head>
 <body>
-    <h1>
-        AVJ News
-        <small>A news article service provided by <a href="https://github.com/Ashwin1421">Ashwin Joshi</a>.</small>
-    </h1>
     <div class="content">
-            <nav class="navbar navbar-default">
+            <nav class="navbar navbar-default navbar-fixed-top">
                     <div class="container-fluid">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
@@ -29,7 +25,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="/">Latest News</a>
+                            <a class="navbar-brand" href="/">AVJ News</a>
                         </div>
                       
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -59,6 +55,9 @@
                                 </div>
                                 <input type="submit" class="btn btn-default" value="Submit">
                             </form>
+                            <ul class="nav navbar-nav text-center">
+                                <p class="navbar-text category-text">{{ selected_category }}</p>
+                            </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More options<span class="caret"></span></a>
@@ -118,7 +117,7 @@
                                     <div class="modal-header">
                                         <h3 class="modal-title" id="shareModalDialogLabel">Share this article</h3>
                                     </div>
-                                    <div class="modal-body text-center">
+                                    <div class="modal-body">
                                         <figure>
                                             <a href=" {{ FACEBOOK_SHARE }}"+"u="+"{{ article.url }}" target="_blank" class="fa fa-facebook"></a>
                                             <figcaption>Facebook</figcaption>

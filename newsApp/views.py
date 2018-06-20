@@ -78,7 +78,7 @@ def category(request):
     except EmptyPage:
         article_list = paginator.page(paginator.num_pages)
 
-    return render(request, template_name, {'article_list': article_list})
+    return render(request, template_name, {'article_list': article_list, 'selected_category':selected_category.upper() })
 
 def source(request):
     template_name = 'news/index.html'

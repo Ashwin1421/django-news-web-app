@@ -1,9 +1,9 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:700,400';
 body {
-    padding: 50px;
+    padding: 3%;
     font-family: Roboto;
     font-weight: 400;
-    font-size: 1.6em;
+    font-size:1vw;
 }
 
 .card {
@@ -29,6 +29,9 @@ body {
   height: 15px;
 }
 
+article {
+  overflow: hidden;
+}
 
 /*
 .social-share-icon { 
@@ -54,7 +57,7 @@ body {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 1vw;
   margin: 4px 2px;
   border-radius: 50%;
   transition: all 0.3s ease;
@@ -140,6 +143,7 @@ figure{
 
 .category {
   float: left;
+  position: fixed;
   margin-top: 20px;
   padding: 25px;
   transition: 0.3s;
@@ -149,11 +153,16 @@ figure{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+.category-text {
+  font-size: 1vw;
+  font-weight: bold;
+  letter-spacing: 1vw;
+}
 div.category > a {
   display: block;
   text-decoration: none;
   color:#404040;
-  font-size: 16px;
+  font-size: 1vw;
   line-height: 48px;
 }
 
