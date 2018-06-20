@@ -120,6 +120,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+STATICFILE_DIRS = (
+    os.path.join(BASE_DIR, 'newsApp\static')
+)
+#print(STATICFILE_DIRS)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 # News API Key
 NEWS_API_KEY = '6439a4f9b5904efb88b11448fb408ce8'
