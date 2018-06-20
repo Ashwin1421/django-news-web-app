@@ -123,9 +123,11 @@ USE_TZ = True
 STATICFILE_DIRS = (
     os.path.join(BASE_DIR, 'newsApp\static')
 )
-#print(STATICFILE_DIRS)
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+print(STATICFILE_DIRS)
+print(STATIC_ROOT)
 # News API Key
 NEWS_API_KEY = '6439a4f9b5904efb88b11448fb408ce8'
 # News API base URL
