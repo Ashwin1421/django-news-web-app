@@ -1,0 +1,168 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:700,400';
+body {
+    padding: 50px;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 1.6em;
+}
+
+.card {
+  float: right;
+  padding: 10px;
+  margin: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+  transition: 0.3s;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.news-source-tn{
+  width: 15px;
+  height: 15px;
+}
+
+
+/*
+.social-share-icon { 
+  color: #FFFFFF;
+  border: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 32px;
+  margin: 4px 2px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+*/
+
+.share-icon{
+  float: right;
+  background-color: #F8F8F8;
+  color: #808080;
+  border: none;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.share-icon:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+.modal-dialog-centered{
+  margin-top: 25%;
+
+}
+
+button:focus{
+  outline: none;
+}
+a:focus {
+  outline: none;
+}
+
+
+figure{
+  display: inline-block;
+  text-decoration: none;
+  padding: 16px;
+}
+.fa {
+  padding: 15px;
+  font-size: 30px;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.fa:hover {
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.fa:link ,
+.fa:visited,
+.fa:active {
+  text-decoration: none;
+  color: white;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-link {
+  background-color: gray;
+  color: white;
+}
+
+.modal-header {
+  text-align: center;
+  padding: 16px;
+  margin: 16px;
+  border-bottom: 2px solid gray;
+}
+
+.category {
+  float: left;
+  margin-top: 20px;
+  padding: 25px;
+  transition: 0.3s;
+  width: 15%;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+div.category > a {
+  display: block;
+  text-decoration: none;
+  color:#404040;
+  font-size: 16px;
+  line-height: 48px;
+}
+
+div.category > a:link {
+  text-decoration: none;
+  color: #404040;
+}
+
+div.category > a:hover {
+  text-decoration: none;
+  color: #337ab7;
+}

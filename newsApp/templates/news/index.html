@@ -1,0 +1,223 @@
+{% load static %}
+<head>
+    <link rel="shortcut icon" href="{% static 'news/images/news.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{% static 'news/css/style.css' %}">
+    <script src="{% static 'news/js/copyURL.js'%}"></script>
+</head>
+<body>
+    <h1>
+        AVJ News
+        <small>A news article service provided by <a href="https://github.com/Ashwin1421">Ashwin Joshi</a>.</small>
+    </h1>
+    <div class="content">
+            <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">Latest News</a>
+                        </div>
+                      
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                
+                                <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Top Sources <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/sources/?source=reuters"><img class="news-source-tn" src="{% static 'news/images/reuters.png'%}">&nbsp;Reuters</a></li>
+                                    <li><a href="/sources/?source=ap"><img class="news-source-tn" src="{% static 'news/images/ap.svg'%}">&nbsp;Associated Press</a></li>
+                                    <li><a href="/sources/?source=bloomberg"><img class="news-source-tn" src="{% static 'news/images/bloomberg.png'%}">&nbsp;Bloomberg</a></li>
+                                    <li><a href="/sources/?source=reddit"><img class="news-source-tn" src="{% static 'news/images/reddit.png'%}">&nbsp;Reddit</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">More Sources</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                </ul>
+                                </li>
+                            </ul>
+                            <form action="/topic/"class="navbar-form navbar-left" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input name="search_term" id="search_term" type="text" class="form-control" placeholder="Search for any article">
+                                </div>
+                                <input type="submit" class="btn btn-default" value="Submit">
+                            </form>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More options<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a data-toggle="modal" href="" data-target="#langModalDialog">Language &amp; Region Settings</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+                <!---->
+                <div class="modal fade" id="langModalDialog" tabindex="-1" role="dialog" aria-labelledby="langModalDialogLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="langModalDialogLabel">Share this article</h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="radio">
+                                    <label><input type="radio" name="optradio">Option 1</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="optradio">Option 2</label>
+                                </div>
+                                <div class="radio disabled">
+                                    <label><input type="radio" name="optradio">Option 3</label>
+                                </div>                        
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                <!---->
+                <!--End of Navbar-->
+                <div class="category">
+                    <a href="/category/?c=business"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;Business</a>
+                    <a href="/category/?c=entertainment"><span class="glyphicon glyphicon-film"></span>&nbsp;&nbsp;Entertainment</a>
+                    <a href="/category/?c=general"><span class="glyphicon glyphicon-bullhorn"></span>&nbsp;&nbsp;General</a>
+                    <a href="/category/?c=health"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;Health</a>
+                    <a href="/category/?c=science"><span class="glyphicon glyphicon-education"></span>&nbsp;&nbsp;Science</a>
+                    <a href="/category/?c=sports"><span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;Sports</a>
+                    <a href="/category/?c=technology"><span class="glyphicon glyphicon-phone"></span>&nbsp;&nbsp;Technology</a>               
+                </div>
+                {% if article_list %}
+                    
+                    {% for article in article_list %}
+                    <div class="card">
+                        <a href="" data-toggle="modal" data-target="#shareModalDialog"><i class="share-icon material-icons">share</i></a>
+                        <!--Modal Dialog-->
+                        <div class="modal fade" id="shareModalDialog" tabindex="-1" role="dialog" aria-labelledby="shareModalDialogLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="shareModalDialogLabel">Share this article</h3>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <figure>
+                                            <a href=" {{ FACEBOOK_SHARE }}"+"u="+"{{ article.url }}" target="_blank" class="fa fa-facebook"></a>
+                                            <figcaption>Facebook</figcaption>
+                                        </figure>
+                                        <figure>
+                                            <a href="{{ TWITTER_SHARE }}"+"url"+"{{ article.url }}" target="_blank" class="fa fa-twitter"></a>
+                                            <figcaption>Twitter</figcaption>
+                                        </figure>
+                                        <figure>
+                                            <a href="javascript:copyToClipboard('{{ article.url }}')" class="fa fa-link"></a>
+                                            <figcaption>Share URL</figcaption>
+                                        </figure>
+                                        <script>
+                                        function copyToClipboard(value) {
+                                            var $temp = $("<input>");
+                                            $("body").append($temp);
+                                            $temp.val(value).select();
+                                            //value.select();
+                                            console.log(value);
+                                            document.execCommand("copy");
+                                            $temp.remove();
+                                        }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Modal Dialog-->
+                        <div class="container clearfix">
+                                
+                            <article>
+                                <a href="{{ article.url }}">
+                                <h4>{{ article.title }}, {{ article.publishedAt }}</h4></a>
+                                <blockquote>
+                                    {% if article.description  %}
+                                        <p>{{ article.description }} </p>
+                                    {% endif %}
+                                    {% if article.author %}
+                                    <footer>{{ article.author }} </footer>
+                                    {% endif %}
+                                </blockquote>
+                            </article>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No Results.</p>
+                {% endif %} 
+
+                {% if is_paginated or article_list.has_other_pages %}
+                <div class="text-center">
+                    <ul class="pagination">
+                        <!--Index Page Results-->
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                            <li class="disabled"><span>&laquo;</span></li>
+                        {% endif %}
+                        <!--End Index Page Results-->
+                        {% if article_list.has_previous %}
+                            <li><a href="?page={{ article_list.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                            <li class="disabled"><span>&laquo;</span></li>
+                        {% endif %}
+                        <!--Index Page Results-->
+                        {% for i in paginator.page_range %}
+                            {% if page_obj.number == i %}
+                                <li class="active"><span>{{ i }}<span class="sr-only">(current)</span></span></li>
+                            {% else %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        <!--End Index Page Results-->
+                        {% for i in article_list.paginator.page_range %}
+                            {% if article_list.number == i %}
+                                <li class="active"><span>{{ i }}<span class="sr-only">(current)</span></span></li>
+                            {% else %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        <!--Index Page Results-->
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                            <li class="disabled"><span>&raquo;</span></li>
+                        {% endif %}
+                        <!--End Index Page Results-->
+                        {% if article_list.has_next %}
+                            <li><a href="?page={{ article_list.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                            <li class="disabled"><span>&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+                    {% endif %}
+                </div>
+    </div>
+    <footer class="footer">
+        <div class="container text-center">
+            <span class="text-muted">This website is powered by <a href="https://newsapi.org/">NewsAPI.org</a>.</span>
+        </div>
+    </footer>
+</body>
