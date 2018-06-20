@@ -25,7 +25,7 @@ SECRET_KEY = 'jbsvw5wrz#tp5-7nye7$7s*sf6y@_!v&9kd3zzph_htg#9p-v-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-news-app.herokuapp.com']
+ALLOWED_HOSTS = ['django-news-app.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -125,9 +125,10 @@ STATICFILE_DIRS = (
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+STATIC_URL = '/staticfiles/'
 print(STATICFILE_DIRS)
 print(STATIC_ROOT)
+print(STATIC_URL)
 # News API Key
 NEWS_API_KEY = '6439a4f9b5904efb88b11448fb408ce8'
 # News API base URL
