@@ -5,7 +5,6 @@ from django.views import generic
 from django.utils import timezone
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from rest_framework.response import Response
 from .models import SearchForm
 from .constants import Constants
 import requests
