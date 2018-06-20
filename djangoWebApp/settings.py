@@ -25,7 +25,7 @@ SECRET_KEY = 'jbsvw5wrz#tp5-7nye7$7s*sf6y@_!v&9kd3zzph_htg#9p-v-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-news-app.herokuapp.com']
 
 
 # Application definition
