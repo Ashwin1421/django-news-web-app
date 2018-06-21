@@ -43,7 +43,7 @@ def topic(request):
     
     for article in articles:
         x = article['publishedAt']
-        article['publishedAt'] = datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').strftime("%B %d %Y")
+        article['publishedAt'] = datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').strftime("%B %d %Y, %I:%M %p")
 
     return render(request, 'news/index.html', {'article_list':articles, 'status': errorStatus} )
 
@@ -80,7 +80,7 @@ def category(request):
 
     for article in article_list:
         x = article['publishedAt']
-        article['publishedAt'] = datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').strftime("%B %d %Y")
+        article['publishedAt'] = datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').strftime("%B %d %Y, %I:%M %p")
 
     return render(request, template_name, {'article_list': article_list, 'selected_category': request.session['selected_category'].upper() })
 
@@ -115,7 +115,7 @@ def source(request):
     
     for article in article_list:
         x = article['publishedAt']
-        article['publishedAt'] = datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').strftime("%B %d %Y")
+        article['publishedAt'] = datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').strftime("%B %d %Y, %I:%M %p")
 
     return render(request, template_name, {'article_list': article_list})
 
