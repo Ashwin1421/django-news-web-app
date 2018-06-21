@@ -19,7 +19,10 @@ footer {
 .card {
   float: right;
   padding: 1vw;
-  margin: 1vw;
+  margin-top: 2vw;
+  margin-bottom: 1vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
   transition: 0.3s;
   width: 75vw;
