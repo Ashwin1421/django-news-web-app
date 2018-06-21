@@ -1,18 +1,28 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:700,400';
 body {
-    padding: 3%;
+    padding: 3vw;
     font-family: Roboto;
     font-weight: 400;
     font-size:1vw;
 }
+h4{
+  font-size: 1.5vw;
+}
 
+blockquote {
+  font-size: 1.25vw;
+}
+
+footer {
+  font-size: 1.05vw;
+}
 .card {
   float: right;
-  padding: 10px;
-  margin: 25px;
+  padding: 1vw;
+  margin: 1vw;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
   transition: 0.3s;
-  width: 80%;
+  width: 75vw;
   border-radius: 5px;
 }
 
@@ -73,8 +83,25 @@ article {
 }
 
 .modal-dialog-centered{
-  margin-top: 25%;
+  margin-top: 10%;
+}
 
+p#clipboardModalLabel{
+  font-size: 1.5vw;
+  color: yellow ;
+}
+#clipboardModal{
+  background-color: none;
+}
+#clipboardModalBody > *{
+  background-color:rgba(0,0,0,0.7);
+}
+.modal-dialog-top-right{
+  float: right;
+  margin-right: 1vw;
+  white-space: nowrap;
+  width: auto;
+  display: block;
 }
 
 button:focus{

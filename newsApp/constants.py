@@ -7,7 +7,7 @@ def getShareBaseURL(request):
             'TWITTER_SHARE': settings.TWITTER_SHARE_BASE_URL
         }
 
-class Constants:
+class Constants(object):
     def __init__(self):
         self.country = ""
         self.search_term = ""
@@ -38,3 +38,9 @@ class Constants:
     
     def getSearchTerm(self):
         return self.search_term
+    
+    def setCategory(self, category):
+        self.category = category
+    
+    def getCategory(self):
+        return self.category

@@ -5,27 +5,20 @@ from django.views import generic
 from django.utils import timezone
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from datetime import datetime
 from .models import SearchForm
-from .constants import Constants
 import requests
 
-constants = None
 # Create your views here.
 
 # Search news articles by some specific search term
 
 def topic(request):
-    global constants
-    if request.method == "POST":
-        form = SearchForm(request.POST)
-        if form.is_valid():
-            #print(form.cleaned_data['search_term'])
-            search_term = form.cleaned_data['search_term']
-            constants = Constants()
-            constants.setSearchTerm(search_term)
-
+    search_query = request.GET.get('search_term')
+    if request.session.get('search_query') is None: 
+        request.session['search_query'] = search_query
     url = settings.NEWS_API_BASE_URL
-    url += "/everything?q="+constants.getSearchTerm()+"&"
+    url += "/everything?q="+request.session['search_query']+"&"
     url += str(timezone.datetime.now().date())+"&"
     url += "sortBy=relevancy&"
     url += "pageSize=100&apiKey="+settings.NEWS_API_KEY
@@ -47,7 +40,11 @@ def topic(request):
         articles = paginator.page(1)
     except EmptyPage:
         articles = paginator.page(paginator.num_pages)
-            
+    
+    for article in articles:
+        x = article['publishedAt']
+        article['publishedAt'] = datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').strftime("%B %d %Y")
+
     return render(request, 'news/index.html', {'article_list':articles, 'status': errorStatus} )
 
 
@@ -58,12 +55,15 @@ def category(request):
     paginate_by = 5
 
     selected_category = request.GET.get('c')
+    if selected_category:
+        if request.session.get('selected_category') is None or selected_category != request.session.get('selected_category'):
+            request.session['selected_category'] = selected_category
     url = settings.NEWS_API_BASE_URL
     url += "/top-headlines?"
     url += "language=en&"
     url += "country=us&"
     if selected_category:
-        url += "category="+selected_category+"&"
+        url += "category="+request.session['selected_category']+"&"
     url += "apiKey="+settings.NEWS_API_KEY
 
     response = requests.get(url)
@@ -78,7 +78,11 @@ def category(request):
     except EmptyPage:
         article_list = paginator.page(paginator.num_pages)
 
-    return render(request, template_name, {'article_list': article_list, 'selected_category':selected_category.upper() })
+    for article in article_list:
+        x = article['publishedAt']
+        article['publishedAt'] = datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').strftime("%B %d %Y")
+
+    return render(request, template_name, {'article_list': article_list, 'selected_category': request.session['selected_category'].upper() })
 
 def source(request):
     template_name = 'news/index.html'
@@ -108,6 +112,10 @@ def source(request):
         article_list = paginator.page(1)
     except EmptyPage:
         article_list = paginator.page(paginator.num_pages)
+    
+    for article in article_list:
+        x = article['publishedAt']
+        article['publishedAt'] = datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').strftime("%B %d %Y")
 
     return render(request, template_name, {'article_list': article_list})
 
@@ -124,10 +132,14 @@ class IndexView(generic.ListView):
     url = settings.NEWS_API_BASE_URL+"/top-headlines?country=us&apiKey="+settings.NEWS_API_KEY
 
     response = requests.get(url)
-    print("Total Results = ",response.json()['totalResults'])
+    #print("Total Results = ",response.json()['totalResults'])
     #print(response.json()['articles'])
     #print(response.json())
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return self.response.json()['articles']
+        articles = self.response.json()['articles']
+        for article in articles:
+            x = article['publishedAt']
+            article['publishedAt'] = datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').strftime("%B %d %Y, %I:%M %p")
+        return articles

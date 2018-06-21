@@ -48,8 +48,8 @@
                                 </ul>
                                 </li>
                             </ul>
-                            <form action="/topic/"class="navbar-form navbar-left" method="POST">
-                                {% csrf_token %}
+                            <form action="/topic/"class="navbar-form navbar-left" method="GET">
+                                
                                 <div class="form-group">
                                     <input name="search_term" id="search_term" type="text" class="form-control" placeholder="Search for any article">
                                 </div>
@@ -117,30 +117,28 @@
                                     <div class="modal-header">
                                         <h3 class="modal-title" id="shareModalDialogLabel">Share this article</h3>
                                     </div>
-                                    <div class="modal-body">
+                                    <div class="modal-body text-center">
                                         <figure>
-                                            <a href=" {{ FACEBOOK_SHARE }}"+"u="+"{{ article.url }}" target="_blank" class="fa fa-facebook"></a>
+                                            <a href=" {{ FACEBOOK_SHARE|add:'u='|add:article.url }}" target="_blank" class="fa fa-facebook"></a>
                                             <figcaption>Facebook</figcaption>
                                         </figure>
                                         <figure>
-                                            <a href="{{ TWITTER_SHARE }}"+"url"+"{{ article.url }}" target="_blank" class="fa fa-twitter"></a>
+                                            <a href="{{ TWITTER_SHARE|add:'url='|add:article.url }}" target="_blank" class="fa fa-twitter"></a>
                                             <figcaption>Twitter</figcaption>
                                         </figure>
                                         <figure>
-                                            <a href="javascript:copyToClipboard('{{ article.url }}')" class="fa fa-link"></a>
+                                            <a href="javascript:copyToClipboard('#articleUrl')" data-toggle="modal" data-backdrop="false" data-target="#clipboardModal" class="fa fa-link"></a>
                                             <figcaption>Share URL</figcaption>
                                         </figure>
-                                        <script>
-                                        function copyToClipboard(value) {
-                                            var $temp = $("<input>");
-                                            $("body").append($temp);
-                                            $temp.val(value).select();
-                                            //value.select();
-                                            console.log(value);
-                                            document.execCommand("copy");
-                                            $temp.remove();
-                                        }
-                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="clipboardModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="clipboardModalLabel" aria-hidden="true">
+                            <div id="clipboardModalBody" class="modal-dialog modal-dialog-top-right" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <p id="clipboardModalLabel">Copied to Clipboard!</p>
                                     </div>
                                 </div>
                             </div>
@@ -149,8 +147,17 @@
                         <div class="container clearfix">
                                 
                             <article>
-                                <a href="{{ article.url }}">
-                                <h4>{{ article.title }}, {{ article.publishedAt }}</h4></a>
+                                <a id="articleUrl" href="{{ article.url }}">
+                                    <h4>{{ article.title }}</h4>
+                                </a>
+                                {% if article.source.name %}
+                                    <p>
+                                        {{ article.source.name }} 
+                                        {% if article.publishedAt %}
+                                            &bull; {{ article.publishedAt }}
+                                        {% endif %}
+                                    </p>
+                                {% endif %}
                                 <blockquote>
                                     {% if article.description  %}
                                         <p>{{ article.description }} </p>
