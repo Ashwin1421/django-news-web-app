@@ -136,3 +136,4 @@ NEWS_API_BASE_URL = 'https://newsapi.org/v2'
 
 FACEBOOK_SHARE_BASE_URL = 'https://www.facebook.com/sharer.php?'
 TWITTER_SHARE_BASE_URL = 'https://www.twitter.com/share?'
+GOOGLE_PLUS_SHARE_BASE_URL = 'https://plus.google.com/share?'
