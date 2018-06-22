@@ -4,7 +4,7 @@ from django.conf import settings
 def getShareBaseURL(request):
         return {
             'FACEBOOK_SHARE': settings.FACEBOOK_SHARE_BASE_URL,
-            'TWITTER_SHARE': settings.TWITTER_SHARE_BASE_URL.
+            'TWITTER_SHARE': settings.TWITTER_SHARE_BASE_URL,
             'GOOGLE_PLUS_SHARE': settings.GOOGLE_PLUS_SHARE_BASE_URL
         }
 
