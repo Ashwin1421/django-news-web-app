@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 {% load static %}
 <head>
     <link rel="shortcut icon" href="{% static 'news/images/news.png' %}" type="image/x-icon">
@@ -106,66 +108,19 @@
                     <a href="/category/?c=technology"><span class="glyphicon glyphicon-phone"></span>&nbsp;&nbsp;Technology</a>               
                 </div>
                 {% if article_list %}
-                    
                     {% for article in article_list %}
                     <div class="card">
-                        <a href="" data-toggle="modal" data-target="#shareModalDialog"><i class="share-icon material-icons">share</i></a>
-                        <!--Modal Dialog-->
-                        <div class="modal fade" id="shareModalDialog" tabindex="-1" role="dialog" aria-labelledby="shareModalDialogLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title" id="shareModalDialogLabel">Share this article</h3>
-                                    </div>
-                                    <div class="modal-body text-center">
-                                        <figure>
-                                            <a href=" {{ FACEBOOK_SHARE|add:'u='|add:article.url }}" target="_blank" class="fa fa-facebook"></a>
-                                            <figcaption>Facebook</figcaption>
-                                        </figure>
-                                        <figure>
-                                            <a href="{{ TWITTER_SHARE|add:'url='|add:article.url }}" target="_blank" class="fa fa-twitter"></a>
-                                            <figcaption>Twitter</figcaption>
-                                        </figure>
-                                        <figure>
-                                            <a href="" id="shareUrl" data-toggle="modal" data-backdrop="false" data-target="#clipboardModal" class="fa fa-link"></a>
-                                            <script>
-                                                $("a#shareUrl").click(function(){
-                                                    //console.log($("#articleUrl").attr('href'));
-                                                    var url = $("#articleUrl").attr('href');
-                                                    //console.log(url);
-                                                    var $temp = $("<input id='tempInput'>");
-                                                    $("body").append($temp);
-                                                    $temp.val(url);
-                                                    $('#tempInput').select();
-                                                    document.execCommand("copy");
-                                                    $temp.remove();
-                                                });
-                                            </script>
-                                            <figcaption>Share URL</figcaption>
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="vertical-social-icons">
+                            <a href=" {{ FACEBOOK_SHARE|add:'u='|add:article.url }}" target="_blank" class="social-share-icon fa fa-facebook"></a>
+                            <a href="{{ TWITTER_SHARE|add:'url='|add:article.url }}" target="_blank" class="social-share-icon fa fa-twitter"></a>
+                            <a href="https://plus.google.com/share?url={{ article.url }}" target="_blank" class="social-share-icon fa fa-google-plus"></a>
                         </div>
-                        <div id="clipboardModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="clipboardModalLabel" aria-hidden="true">
-                            <div id="clipboardModalBody" class="modal-dialog modal-dialog-top-right" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <p id="clipboardModalLabel">Copied to Clipboard!</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Modal Dialog-->
                         <div class="container clearfix">
                                 
                             <article>
-                                <a id="articleUrl" href="{{ article.url }}">
+                                <a id="articleUrl" href="{{ article.url }}" target="_blank">
                                     <h4>{{ article.title }}</h4>
-                                    
                                 </a>
-                                
-                                
                                 {% if article.source.name %}
                                     <p>
                                         {{ article.source.name }} 
@@ -243,3 +198,4 @@
         </div>
     </footer>
 </body>
+</html>

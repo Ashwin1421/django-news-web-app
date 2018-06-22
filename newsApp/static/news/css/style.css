@@ -114,20 +114,23 @@ a:focus {
   outline: none;
 }
 
+.vertical-social-icons {
+  float: right;
+  width: 3.5 vw;
+}
 
-figure{
-  display: inline-block;
-  text-decoration: none;
-  padding: 16px;
+.vertical-social-icons > * {
+  display: block;
+  width: 100%;
 }
 .fa {
-  padding: 15px;
-  font-size: 30px;
-  height: 60px;
-  width: 60px;
+  padding: 0.75em;
+  font-size: 1.2em;
+  width: 2.5em;
+  height: 2.5em;
+  margin: 0.5em;
   text-align: center;
   text-decoration: none;
-  margin: 10px;
   border-radius: 50%;
   transition: all 0.3s ease;
 }
@@ -159,6 +162,10 @@ figure{
   color: white;
 }
 
+.fa-google-plus {
+  background: #dd4b39;
+  color: white;
+}
 .fa-link {
   background-color: gray;
   color: white;
