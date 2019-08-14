@@ -130,7 +130,7 @@ STATICFILES_DIRS = (
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # News API Key
-NEWS_API_KEY = '6439a4f9b5904efb88b11448fb408ce8'
+NEWS_API_KEY = ''
 # News API base URL
 NEWS_API_BASE_URL = 'https://newsapi.org/v2'
 
